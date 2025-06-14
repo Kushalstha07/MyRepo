@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sorry</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .popup, .new-page {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .popup h1 {
+      margin-bottom: 25px;
+      font-size: 30px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .continue-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .exit-btn {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+
+    .new-page {
+      display: none;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="popup" id="popup">
+    <h1>Hey</h1>
+    <button class="continue-btn" onclick="showNewPage()">Continue</button>
+    <button class="exit-btn" id="exitBtn">Exit</button>
+  </div>
+
+  <div class="new-page" id="newPage">
+    <p>Sorry bby</p>
+  </div>
+
+  <script>
+    const exitBtn = document.getElementById("exitBtn");
+    const popup = document.getElementById("popup");
+    const newPage = document.getElementById("newPage");
+
+    exitBtn.addEventListener("mouseover", () => {
+      const maxX = popup.clientWidth - exitBtn.clientWidth;
+      const maxY = popup.clientHeight - exitBtn.clientHeight;
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      exitBtn.style.left = `${newX}px`;
+      exitBtn.style.top = `${newY}px`;
+    });
+
+    function showNewPage() {
+      popup.style.display = "none";
+      newPage.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
